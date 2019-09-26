@@ -263,8 +263,8 @@ def graficos(d_plancha, planchas_totales, lista):
 
 
 def main():
-    direc_in = "/home/joaquin/Documents/p_python/TP_Complejidad/entrada"
-    direc_out = "/home/joaquin/Documents/p_python/TP_Complejidad/salida"
+    direc_in = input()
+    direc_out = input()
 
     d_plancha, tablas = Establecer_data(direc_in)
     tablas = sort_by(tablas, 'width')
