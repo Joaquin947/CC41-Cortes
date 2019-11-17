@@ -2,6 +2,7 @@ from string import ascii_lowercase
 import itertools
 import random
 import cajas
+import heapq as hq
 
 
 def iter_all_strings():
@@ -14,7 +15,7 @@ def crear(direc):
     file = open(direc, 'w')
 
     hb, wb, ab = random.randint(1, 10), random.randint(1, 10), random.randint(1, 10)
-    qf = random.randint(1, 10)
+    qf = random.randint(1, 4)
 
     file.write(str(hb) + " " + str(wb) + " " + str(ab))
     file.write("\n")
@@ -38,18 +39,31 @@ def crear(direc):
 def leer(direc):
     file = open(direc, 'r')
 
-    line = file.readline().split()
-    contenedor = [int(line[0]), int(line[1]), int(line[2])]
+    line = file.readline().strip().split()
+    contenedor = cajas.caja("Container", int(line[0]), int(line[1]), int(line[2]))
     qf = int(file.readline())
     heap = []
 
     for i in range(qf):
-        line = file.readline().split()
+        line = file.readline().strip().split()
         for j in range(int(line[0])):
-            pieza = caja(str(line[1] + str(i+1)), int(line[2]), int(line[3]), int(line[4]))
+            pieza = cajas.caja(str(line[1]), int(line[2]), int(line[3]), int(line[4]))
+            pieza.posicionar(contenedor.orientacion)
+            hq.heappush(heap, pieza)
 
     file.close()
+
+    return contenedor, heap
+
+
+def salida(direc, numcont, )
 
 
 if __name__ == "__main__":
     crear("/home/mrjoako/Documents/Sublime/Python/TF Complejidad/in.txt")
+    c, a = leer("/home/mrjoako/Documents/Sublime/Python/TF Complejidad/in.txt")
+
+    c.mostrar()
+    while a:
+        x = hq.heappop(a)
+        x.mostrar()
