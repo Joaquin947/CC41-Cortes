@@ -48,13 +48,13 @@ def actualizar_volumen_disponible(cont, caja, punto):
             yield {n_vol: np_alto}
 
 
-def acomodar(container, heap):  # O(n*c*k)
+def acomodar(container, heap):              #O(n*c*k)
     a_punt = []
     prioridad = []
 
     crear_cont(container, a_punt)
 
-    while heap or prioridad:  # O(n)  n->numero de cajas
+    while heap or prioridad:        #O(n)  n->numero de cajas
         colocado = False
 
         if prioridad:
@@ -62,8 +62,8 @@ def acomodar(container, heap):  # O(n*c*k)
         else:
             c_actual = hq.heappop(heap)
 
-        for i in range(len(a_punt)):  # O(c)  c->numero de contenedores
-            keys = list(a_punt[i].keys())  # O(k)  k->numero puntos de referencia
+        for i in range(len(a_punt)):                #O(c)  c->numero de contenedores
+            keys = list(a_punt[i].keys())           #O(k)  k->numero puntos de referencia
 
             for j in range(len(keys)):
 
@@ -101,13 +101,18 @@ def acomodar(container, heap):  # O(n*c*k)
 
 
 def main():
-    archivos.crear("/home/mrjoako/Documents/GitHub/CC41-Cortes/Trabajo Final/in.txt")
-    c, h = archivos.leer("/home/mrjoako/Documents/GitHub/CC41-Cortes/Trabajo Final/in.txt")
+    ####### Ingresar los path a las carpeta destino incluyendo a final el nombre del archivo y su extension  (e.g.: "G:\TF Complejidad\in.txt"') ########
+    direc_in = "G:\TF Complejidad\in.txt"
+    direc_out = "G:\TF Complejidad\out.txt"
+
+
+    archivos.crear(direc_in)
+    c, h = archivos.leer(direc_in)
 
     arr = h.copy()
     n_connt = acomodar(c, h)
 
-    archivos.salida("/home/mrjoako/Documents/GitHub/CC41-Cortes/Trabajo Final/out.txt", n_connt, c, arr)
+    archivos.salida(direc_out, n_connt, c, arr)
 
 
 if __name__ == '__main__':
