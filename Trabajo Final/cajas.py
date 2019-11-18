@@ -8,6 +8,7 @@ class caja():
         self.alto = height
         self.ancho = widht
         self.largo = longg
+        self.vol = self.alto * self.ancho * self.largo
         self.container = -1
         self.pos = [-1, -1, -1]
         self.orientacion = -1
@@ -58,7 +59,7 @@ class caja():
         return self.det_orientacion()
 
     def mostrar(self):
-        print(self.name, ":", self.alto, self.ancho, self.largo)
+        print(self.name, ":", self.alto, self.ancho, self.largo, "----", self.orientacion)
         # print(self.pos)
         # print(self.orientacion)
 
